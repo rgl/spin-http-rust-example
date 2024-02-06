@@ -1,0 +1,18 @@
+spin_manifest_version = 2
+
+[application]
+name = "spin-http-rust-example"
+version = "0.1.0"
+authors = ["Rui Lopes <rgl@ruilopes.com>"]
+description = "Example Spin HTTP Application written in Rust"
+
+[[trigger.http]]
+route = "/..."
+component = "spin-http-rust-example"
+
+[component.spin-http-rust-example]
+source = "target/wasm32-wasi/release/spin_http_rust_example.wasm"
+allowed_outbound_hosts = []
+[component.spin-http-rust-example.build]
+command = "cargo build --target wasm32-wasi --release"
+watch = ["src/**/*.rs", "Cargo.toml"]
