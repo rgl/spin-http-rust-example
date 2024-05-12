@@ -2,3 +2,4 @@
 FROM scratch
 COPY ./dist/spin.toml .
 COPY ./dist/spin_http_rust_example.wasm .
+CMD ["/"]
