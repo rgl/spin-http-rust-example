@@ -56,7 +56,7 @@ Use `crictl`:
 # see https://github.com/kubernetes-sigs/cri-tools/blob/master/cmd/crictl/container.go
 # see https://github.com/kubernetes/cri-api/blob/kubernetes-1.27.10/pkg/apis/runtime/v1/api.proto
 crictl pull \
-  ghcr.io/rgl/spin-http-rust-example:0.3.0
+  ghcr.io/rgl/spin-http-rust-example:0.3.1
 crictl images list
 crictl info | jq .config.containerd.runtimes
 install -d -m 700 /var/log/cri
@@ -71,7 +71,7 @@ cat >cri-spin-http-rust-example.web.ctr.yml <<'EOF'
 metadata:
   name: web
 image:
-  image: ghcr.io/rgl/spin-http-rust-example:0.3.0
+  image: ghcr.io/rgl/spin-http-rust-example:0.3.1
 command:
   - /
 log_path: web.log
@@ -104,13 +104,13 @@ Use `ctr`:
 
 ```bash
 ctr image pull \
-  ghcr.io/rgl/spin-http-rust-example:0.3.0
+  ghcr.io/rgl/spin-http-rust-example:0.3.1
 ctr images list
 ctr run \
   --detach \
   --runtime io.containerd.spin.v2 \
   --net-host \
-  ghcr.io/rgl/spin-http-rust-example:0.3.0 \
+  ghcr.io/rgl/spin-http-rust-example:0.3.1 \
   ctr-spin-http-rust-example
 ctr sandboxes list # aka pods.
 ctr containers list
