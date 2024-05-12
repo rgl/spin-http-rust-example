@@ -4,6 +4,7 @@
         "containerd",
         "crictl",
         "Fermyon",
+        "healthz",
         "inspectp",
         "runp",
         "runtimes",

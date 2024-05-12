@@ -16,6 +16,9 @@ struct IndexTemplate<'a> {
 
 #[http_component]
 fn handle_spin_http_rust_example(req: Request) -> anyhow::Result<impl IntoResponse> {
+    if req.path() == "/healthz/ready" {
+        return Ok(Response::new(200, "OK"));
+    }
     if req.path() != "/" {
         return Ok(Response::new(404, "Not Found."));
     }
