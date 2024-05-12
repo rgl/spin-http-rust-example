@@ -17,18 +17,10 @@ struct IndexTemplate<'a> {
 #[http_component]
 fn handle_spin_http_rust_example(req: Request) -> anyhow::Result<impl IntoResponse> {
     if req.path() != "/" {
-        return Ok(Response::builder()
-            .status(404)
-            .header("content-type", "text/plain")
-            .body("Not Found.")
-            .build());
+        return Ok(Response::new(404, "Not Found."));
     }
     if req.method() != &Method::Get && req.method() != &Method::Head {
-        return Ok(Response::builder()
-            .status(405)
-            .header("content-type", "text/plain")
-            .body("Method Not Allowed.")
-            .build());
+        return Ok(Response::new(405, "Method Not Allowed."));
     }
     let template = IndexTemplate {
         source_url: meta::SOURCE_URL,
